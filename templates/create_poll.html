@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 style="text-align:center;">Create Poll</h2>
+
+<form method="POST">
+
+    <input type="text" name="title" placeholder="Poll Title" required>
+
+    <div id="options-container">
+        <input type="text" name="options" placeholder="Option 1" required>
+        <input type="text" name="options" placeholder="Option 2" required>
+    </div>
+
+    <button type="button" onclick="addOption()">+ Add More Option</button>
+
+    <button type="submit">Create Poll</button>
+
+</form>
+
+<script>
+let optionCount = 3;
+
+function addOption() {
+    const container = document.getElementById("options-container");
+
+    const input = document.createElement("input");
+    input.type = "text";
+    input.name = "options";
+    input.placeholder = "Option " + optionCount;
+    input.required = true;
+
+    container.appendChild(input);
+
+    optionCount++;
+}
+</script>
+
+{% endblock %}

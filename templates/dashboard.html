@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="dashboard-title">All Polls</h2>
+
+<div class="dashboard-actions">
+    <a href="/create_poll" class="create-btn">+ Create New Poll</a>
+</div>
+
+{% if polls %}
+    <div class="poll-list">
+        {% for poll in polls %}
+            <div class="poll-card">
+                <h3>{{ poll[1] }}</h3>
+
+                <div class="poll-buttons">
+                    <a href="/vote/{{ poll[0] }}" class="vote-btn">Vote</a>
+                    <a href="/results/{{ poll[0] }}" class="result-btn">View Results</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="no-polls">No polls available yet. Create one!</p>
+{% endif %}
+
+{% endblock %}
